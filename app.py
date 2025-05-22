@@ -8,7 +8,7 @@ model = joblib.load("model_lung_cancer.pkl")
 feature_order = joblib.load("feature_columns.pkl")
 
 # Judul Aplikasi
-st.title("Prediksi Penyakit Kanker Paru-paru")
+st.title("🫁Prediksi Penyakit Kanker Paru-paru")
 st.markdown("Silakan isi data berikut untuk melakukan prediksi kemungkinan risiko kanker paru-paru.")
 
 # Fungsi bantu untuk konversi nilai
@@ -19,6 +19,7 @@ def encode_binary(val):
 AGE = st.number_input("Usia (dalam tahun)", min_value=20, max_value=100, value=50)
 
 # Daftar pertanyaan biner
+st.markdown("### 📝 Kuesioner Gejala & Riwayat")
 questions = {
     "GENDER": "Apakah Anda seorang laki-laki?",
     "SMOKING": "Apakah Anda merokok? (Baik rokok aktif maupun vape)",
@@ -59,7 +60,7 @@ input_data = pd.DataFrame([{
 input_data = input_data[feature_order]
 
 # Tombol untuk prediksi
-if st.button("Prediksi"):
+if st.button("🔍 Lakukan Prediksi"):
     prediction = model.predict(input_data)[0]
     probabilities = model.predict_proba(input_data)[0]
     confidence = probabilities[prediction]
@@ -70,7 +71,7 @@ if st.button("Prediksi"):
         st.error("POSITIF – Berdasarkan hasil prediksi, Anda **berpotensi memiliki gejala atau risiko kanker paru-paru**. "
                  "Disarankan untuk segera berkonsultasi dengan tenaga medis profesional untuk pemeriksaan lebih lanjut.")
     else:
-        st.subheader("Hasil Prediksi:")
+        st.subheader("📊 Hasil Prediksi:")
         st.success("NEGATIF – Berdasarkan hasil prediksi, Anda **tidak menunjukkan indikasi signifikan terhadap kanker paru-paru**. "
                    "Tetap jaga kesehatan dan lakukan pemeriksaan rutin bila diperlukan.")
 
