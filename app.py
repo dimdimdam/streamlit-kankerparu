@@ -36,7 +36,8 @@ questions = {
     "STRESS_IMMUNE": "Apakah stres berdampak pada daya tahan tubuh Anda? (Contoh: mudah sakit saat stres)",
     "MENTAL_STRESS": "Apakah stres atau tekanan pikiran sering memengaruhi kondisi fisik Anda?",
     "ENERGY_LEVEL_KATEGORI": "Apakah Anda merasa tubuh Anda mudah lelah tanpa alasan dalam aktivitas sehari-hari?",
-    "OXYGEN_SATURATION_KATEGORI": "Apakah kadar saturasi oksigen Anda pernah di bawah 95% atau sering merasa kekurangan oksigen?"
+    "OXYGEN_SATURATION_KATEGORI": "Apakah kadar saturasi oksigen Anda pernah di bawah 92% atau sering merasa kekurangan oksigen?"\
+
 }
 
 # Tempat menyimpan input pengguna
@@ -44,6 +45,11 @@ user_input = {}
 
 # Input untuk setiap pertanyaan biner
 for key, question in questions.items():
+    if key == "OXYGEN_SATURATION_KATEGORI":
+        st.markdown("### 🫁 Contoh Alat")
+        st.image("saturasioks.jpg", caption="Ilustrasi pengukuran kadar saturasi oksigen",
+                 use_column_width=True)
+
     response = st.radio(question, ["-", "Tidak", "Ya"], key=key)
     if response == "-":
         st.warning(f"Silakan jawab pertanyaan ")
