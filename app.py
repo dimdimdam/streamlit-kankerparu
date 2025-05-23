@@ -48,7 +48,7 @@ for key, question in questions.items():
     if key == "OXYGEN_SATURATION_KATEGORI":
         st.markdown("### 🫁 Contoh Alat")
         st.image("saturasioks.jpg", caption="Ilustrasi pengukuran kadar saturasi oksigen",
-                 use_column_width=True)
+                 use_container_width=True)
 
     response = st.radio(question, ["-", "Tidak", "Ya"], key=key)
     if response == "-":
