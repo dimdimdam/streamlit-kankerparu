@@ -34,7 +34,7 @@ questions = {
     "FAMILY_HISTORY": "Apakah ada anggota keluarga Anda yang pernah menderita kanker paru-paru?",
     "SMOKING_FAMILY_HISTORY": "Apakah ada anggota keluarga Anda yang merokok secara rutin di rumah?",
     "STRESS_IMMUNE": "Apakah stres berdampak pada daya tahan tubuh Anda? (Contoh: mudah sakit saat stres)",
-    "MENTAL_STRESS": "Apakah stres atau tekanan pikiran sering memengaruhi kondisi fisik Anda?",
+    "MENTAL_STRESS": "Apakah stres yang anda alami sering membuat tubuh anda terasa tidak nyaman atau muncul gejala fisik tertentu (seperti sakit kepala dan lemas)",
     "ENERGY_LEVEL_KATEGORI": "Apakah Anda merasa tubuh Anda mudah lelah tanpa alasan dalam aktivitas sehari-hari?",
     "OXYGEN_SATURATION_KATEGORI": "Apakah kadar saturasi oksigen Anda pernah di bawah 92% atau sering merasa kekurangan oksigen?"\
 
@@ -48,7 +48,7 @@ for key, question in questions.items():
     if key == "OXYGEN_SATURATION_KATEGORI":
         st.markdown("### 🫁 Contoh Alat")
         st.image("saturasioks.jpg", caption="Ilustrasi pengukuran kadar saturasi oksigen",
-                 use_container_width=True)
+                 use_column_width=True)
 
     response = st.radio(question, ["-", "Tidak", "Ya"], key=key)
     if response == "-":
