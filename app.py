@@ -18,7 +18,9 @@ def encode_binary(val):
 
 
 # Input Usia
-AGE = st.number_input("Usia (dalam tahun)", min_value=20, max_value=100, value=50)
+st.markdown("<p style='font-size:20px;'>Usia (dalam tahun)</p>", unsafe_allow_html=True)
+AGE = st.number_input(label="", min_value=20, max_value=100, value=50)
+
 
 # Daftar pertanyaan biner
 st.markdown("### 📝 Kuesioner Gejala & Riwayat")
