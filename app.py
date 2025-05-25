@@ -18,7 +18,7 @@ def encode_binary(val):
 
 
 # Input Usia
-st.markdown("<p style='font-size:20px;'>Usia (dalam tahun)</p>", unsafe_allow_html=True)
+st.markdown("<p style='font-size:18px;'>Usia (dalam tahun)</p>", unsafe_allow_html=True)
 AGE = st.number_input(label="", min_value=20, max_value=100, value=50)
 
 
@@ -53,7 +53,7 @@ for key, question in questions.items():
         st.image("saturasioks.jpg", caption="Ilustrasi pengukuran kadar saturasi oksigen", use_container_width=True)
 
     # Tampilkan pertanyaan dengan font besar
-    st.markdown(f"<p style='font-size:20px; font-weight:'>{question}</p>", unsafe_allow_html=True)
+    st.markdown(f"<p style='font-size:18px; font-weight:'>{question}</p>", unsafe_allow_html=True)
 
     response = st.radio("dummy", ["-", "Tidak", "Ya"], key=key, label_visibility="collapsed")
     if response == "-":
