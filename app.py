@@ -48,10 +48,10 @@ user_input = {}
 for key, question in questions.items():
     if key == "OXYGEN_SATURATION_KATEGORI":
         st.markdown("### 🫁 Contoh Alat")
-        st.image("saturasioks.jpg", caption="Ilustrasi pengukuran kadar saturasi oksigen", use_column_width=True)
+        st.image("saturasioks.jpg", caption="Ilustrasi pengukuran kadar saturasi oksigen", use_container_width=True)
 
     # Tampilkan pertanyaan dengan font besar
-    st.markdown(f"<p style='font-size:21px; font-weight:'>{question}</p>", unsafe_allow_html=True)
+    st.markdown(f"<p style='font-size:20px; font-weight:'>{question}</p>", unsafe_allow_html=True)
 
     response = st.radio("dummy", ["-", "Tidak", "Ya"], key=key, label_visibility="collapsed")
     if response == "-":
