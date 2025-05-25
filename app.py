@@ -8,7 +8,7 @@ feature_order = joblib.load("feature_columns.pkl")
 
 # Judul Aplikasi
 st.title("🫁Prediksi Penyakit Kanker Paru-paru")
-st.markdown("<p style='font-size:20px;'>Silakan isi data berikut untuk melakukan prediksi kemungkinan risiko kanker paru-paru.</p>", unsafe_allow_html=True)
+st.markdown("<p style='font-size:24px;'>Silakan isi data berikut untuk melakukan prediksi kemungkinan risiko kanker paru-paru.</p>", unsafe_allow_html=True)
 
 
 
@@ -51,7 +51,7 @@ for key, question in questions.items():
         st.image("saturasioks.jpg", caption="Ilustrasi pengukuran kadar saturasi oksigen", use_column_width=True)
 
     # Tampilkan pertanyaan dengan font besar
-    st.markdown(f"<p style='font-size:20px; font-weight:'>{question}</p>", unsafe_allow_html=True)
+    st.markdown(f"<p style='font-size:24px; font-weight:'>{question}</p>", unsafe_allow_html=True)
 
     response = st.radio("dummy", ["-", "Tidak", "Ya"], key=key, label_visibility="collapsed")
     if response == "-":
