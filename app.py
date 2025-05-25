@@ -1,4 +1,3 @@
-# app.py
 import streamlit as st
 import pandas as pd
 import joblib
@@ -9,11 +8,14 @@ feature_order = joblib.load("feature_columns.pkl")
 
 # Judul Aplikasi
 st.title("🫁Prediksi Penyakit Kanker Paru-paru")
-st.markdown("Silakan isi data berikut untuk melakukan prediksi kemungkinan risiko kanker paru-paru.")
+st.markdown("<p style='font-size:20px;'>Silakan isi data berikut untuk melakukan prediksi kemungkinan risiko kanker paru-paru.</p>", unsafe_allow_html=True)
+
+
 
 # Fungsi bantu untuk konversi nilai
 def encode_binary(val):
     return 1 if val == "Ya" else 0
+
 
 # Input Usia
 AGE = st.number_input("Usia (dalam tahun)", min_value=20, max_value=100, value=50)
@@ -36,8 +38,7 @@ questions = {
     "STRESS_IMMUNE": "Apakah stres berdampak pada daya tahan tubuh Anda? (Contoh: mudah sakit saat stres)",
     "MENTAL_STRESS": "Apakah stres yang anda alami sering membuat tubuh anda terasa tidak nyaman atau muncul gejala fisik tertentu (seperti sakit kepala dan lemas)",
     "ENERGY_LEVEL_KATEGORI": "Apakah Anda merasa tubuh Anda mudah lelah tanpa alasan dalam aktivitas sehari-hari?",
-    "OXYGEN_SATURATION_KATEGORI": "Apakah kadar saturasi oksigen Anda pernah di bawah 92% atau sering merasa kekurangan oksigen?"\
-
+    "OXYGEN_SATURATION_KATEGORI": "Apakah kadar saturasi oksigen Anda pernah di bawah 92% atau sering merasa kekurangan oksigen?"
 }
 
 # Tempat menyimpan input pengguna
@@ -47,12 +48,14 @@ user_input = {}
 for key, question in questions.items():
     if key == "OXYGEN_SATURATION_KATEGORI":
         st.markdown("### 🫁 Contoh Alat")
-        st.image("saturasioks.jpg", caption="Ilustrasi pengukuran kadar saturasi oksigen",
-                 use_container_width=True)
+        st.image("saturasioks.jpg", caption="Ilustrasi pengukuran kadar saturasi oksigen", use_column_width=True)
 
-    response = st.radio(question, ["-", "Tidak", "Ya"], key=key)
+    # Tampilkan pertanyaan dengan font besar
+    st.markdown(f"<p style='font-size:20px; font-weight:'>{question}</p>", unsafe_allow_html=True)
+
+    response = st.radio("dummy", ["-", "Tidak", "Ya"], key=key, label_visibility="collapsed")
     if response == "-":
-        st.warning(f"Silakan jawab pertanyaan ")
+        st.warning("Silakan jawab semua pertanyaan sebelum melanjutkan.")
         st.stop()
     user_input[key] = encode_binary(response)
 
@@ -74,11 +77,13 @@ if st.button("🔍 Lakukan Prediksi"):
     # Hasil
     if prediction == 1:
         st.subheader("Hasil Prediksi:")
-        st.error("POSITIF – Berdasarkan hasil prediksi, Anda **berpotensi memiliki gejala atau risiko kanker paru-paru**. "
-                 "Disarankan untuk segera berkonsultasi dengan tenaga medis profesional untuk pemeriksaan lebih lanjut.")
+        st.error(
+            "POSITIF – Berdasarkan hasil prediksi, Anda **berpotensi memiliki gejala atau risiko kanker paru-paru**. "
+            "Disarankan untuk segera berkonsultasi dengan tenaga medis profesional untuk pemeriksaan lebih lanjut.")
     else:
         st.subheader("📊 Hasil Prediksi:")
-        st.success("NEGATIF – Berdasarkan hasil prediksi, Anda **tidak menunjukkan indikasi signifikan terhadap kanker paru-paru**. "
-                   "Tetap jaga kesehatan dan lakukan pemeriksaan rutin bila diperlukan.")
+        st.success(
+            "NEGATIF – Berdasarkan hasil prediksi, Anda **tidak menunjukkan indikasi signifikan terhadap kanker paru-paru**. "
+            "Tetap jaga kesehatan dan lakukan pemeriksaan rutin bila diperlukan.")
 
     st.info(f"🔍 Tingkat Keyakinan Model: **{confidence * 100:.2f}%**")
