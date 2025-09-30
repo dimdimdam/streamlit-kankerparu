@@ -7,7 +7,7 @@ model = joblib.load("model_lung_cancer.pkl")
 feature_order = joblib.load("feature_columns.pkl")
 
 # Judul Aplikasi
-st.title("🫁Prediksi Penyakit Kanker Paru-paru")
+st.title("🫁Prediksi Penyakit Kanker Paru")
 st.markdown("<p style='font-size:23px;'>Silakan isi data berikut untuk melakukan prediksi kemungkinan risiko kanker paru-paru.</p>", unsafe_allow_html=True)
 
 
